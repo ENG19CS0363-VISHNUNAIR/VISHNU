@@ -45,8 +45,8 @@ a[i]=input();
 }
 for(int i=0;i<n;i++)
 {
-x=sum(c,a[i]);
+x=sum(x,a[i]);
 }
-printf("the final sum is %d %d which is %.2f%",x.num,x.den,(x.num/(1.0*x.deno))*100);
+printf("the final sum is %d %d which is %.2f%",x.num,x.den,(x.num/(1.0*x.den))*100);
 return 0;
 }
