@@ -70,4 +70,46 @@ for(int i=0;i<pgb->n_scores;i++)
 {
 total_weights=total_weights+pgb->weights[i];
 }
-for
+for(int i=0;i< pgb->n_students;i++)
+{
+sum=0;
+for(int j=0;j< pgb->n_scores;j++)
+{
+sum=sum+((pgb->weights[j])*(pgb->st[i].scores[j]));
+}
+pgb->st[i].avg=sum/total_weights;
+pgb->st[i].grade=grade_compute(pgb->st[i]);
+}
+}
+void compute_grade_n_students(int n,gradebook course[n])
+{
+for(int i=0;i<n;i++)
+{
+compute_grade_one_student(&course[i]);
+}
+}
+void print_grade_one_student(students s)
+{
+printf("%s %f %c",s.names,s.avg,s.grade);
+}
+void print_grade_one_students(int n,gradebook courses[n])
+{
+for(int i=0;i<n;i++)
+{
+printf("%s",courses[i].course);
+for(int j=0;j<courses[i].n_students;j++)
+{
+print_grade_one_student(courses[i].st[j]);
+}
+}
+int main()
+{
+gradebook gb[100];
+int n;
+
+scanf("%d",&n);
+input_n_gradebook(n,gb);
+compute_grade_n_students(n,gb);
+print_grade_n_students(n,gb);
+return 0;
+}
